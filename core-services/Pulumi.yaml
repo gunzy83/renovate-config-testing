@@ -1,0 +1,12 @@
+name: core-services
+runtime: nodejs
+description: Pulumi program to manage core services
+config:
+  alb-controller:chart-version: "1.5.1"
+  cert-manager:chart-version: "1.11.1"
+  datadog-agent:operator-version: "1.5.0"
+  external-dns:chart-version: "1.13.0"
+  prometheus-operator:operator-version: "53.0.0"
+  squid-egress-proxy:image-tag: '5.2-22.04_beta'
+  reloader:chart-version: "1.0.98"
+  traefik:chart-version: "27.0.2"
