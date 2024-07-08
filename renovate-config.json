@@ -1,0 +1,22 @@
+{
+  "baseBranches": [
+    "master"
+  ],
+  "rebaseWhen": "conflicted",
+  "labels": [
+    "dependencies"
+  ],
+  "automergeStrategy": "merge-commit",
+  "ignoreTests": true,
+  "regexManagers": [
+    {
+      "datasourceTemplate": "github-releases",
+      "fileMatch": [
+        ".*/Pulumi(\\.|\\.[a-z0-9-]*)yaml"
+      ],
+      "matchStrings": [
+        "  teleport:chart-version: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate: depName=(?<depName>[^ \\n]+) +(extractVersion=(?<extractVersion>[^\\n]+))?"
+      ]
+    }
+  ]
+}
