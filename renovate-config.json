@@ -1,5 +1,8 @@
 {
   "platform": "github",
+  "repositories": [
+    "gunzy83/renovate-config-testing"
+  ],
   "baseBranches": [
     "master"
   ],
