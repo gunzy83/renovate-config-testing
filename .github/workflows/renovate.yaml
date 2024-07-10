@@ -1,5 +1,9 @@
 name: Renovate
 on:
+  # run this when pushing config changes (testing)
+  push:
+    branches:
+      - master
   # Allows manual/automated ad-hoc trigger
   workflow_dispatch:
   # schedule:
@@ -16,5 +20,5 @@ jobs:
       - name: Self-hosted Renovate
         uses: renovatebot/github-action@v40.2.1
         with:
-          configurationFile: renovate-config.json
+          configurationFile: .github/renovate-bot-config.json
           token: ${{ secrets.RENOVATE_TOKEN }}
