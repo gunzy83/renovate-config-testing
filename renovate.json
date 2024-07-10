@@ -16,6 +16,7 @@
     {
       "customType": "regex",
       "datasourceTemplate": "helm",
+      "versioningTemplate": "semver",
       "fileMatch": [
         ".*/Pulumi(\\.|\\.[a-z0-9-]*)yaml"
       ],
@@ -32,7 +33,7 @@
   ],
   "packageRules": [
     {
-      "matchDepNames": "gravitational/teleport",
+      "matchDepNames": "teleport-kube-agent",
       "allowedVersions": "/^[1-9][0-9]*\\.[1-9][0-9]*\\.[0-9]+$/"
     }
   ],
