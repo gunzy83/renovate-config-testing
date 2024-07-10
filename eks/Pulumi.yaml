@@ -25,7 +25,7 @@ config:
             }
           }
         }
-  metrics-server:chart-version: "3.11.0" # renovate: depName=kubernetes-sigs/metrics-server extractVersion=^metrics-server-helm-chart-(?<version>.+)$
+  metrics-server:chart-version: "3.11.0" # renovate: depName=metrics-server registryUrl=https://kubernetes-sigs.github.io/metrics-server/
   teleport:chart-version: "15.3.1" # renovate: depName=teleport-kube-agent registryUrl=https://charts.releases.teleport.dev
   sscsi-provider-aws:chart-version: '0.3.4'
 
