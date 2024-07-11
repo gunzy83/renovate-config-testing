@@ -26,6 +26,7 @@
     }
   ],
   "enabledManagers": [
+    "asdf",
     "custom.regex"
   ],
   "labels": [
