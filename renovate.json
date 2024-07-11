@@ -21,7 +21,7 @@
         ".*/Pulumi(\\.|\\.[a-z0-9-]*)yaml"
       ],
       "matchStrings": [
-        "  [a-z][a-z.-]+:chart-version: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate: depName=(?<depName>[^ \\n]+) +(registryUrl=(?<registryUrl>.*)) ?(sourceUrl=(?<sourceUrl>.*))? ?(sourceDirectory=(?<sourceDirectory>.*))?"
+        "  [a-z][a-z.-]+:chart-version: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate: depName=(?<depName>[^ \\n]+) +(registryUrl=(?<registryUrl>[^ \\n]+)) ?(sourceUrl=(?<sourceUrl>[^ \\n]+))? ?(sourceDirectory=(?<sourceDirectory>[^ \\n]+))?"
       ]
     }
   ],
