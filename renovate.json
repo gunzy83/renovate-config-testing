@@ -21,7 +21,7 @@
         ".*/Pulumi(\\.|\\.[a-z0-9-]*)yaml"
       ],
       "matchStrings": [
-        "  [a-z][a-z.-]+:chart-version: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate: depName=(?<depName>[^ \\n]+) +(registryUrl=(?<registryUrl>.*))"
+        "  [a-z][a-z.-]+:chart-version: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate: depName=(?<depName>[^ \\n]+) +(registryUrl=(?<registryUrl>.*)) ?(sourceUrl=(?<sourceUrl>.*))? ?(sourceDirectory=(?<sourceDirectory>.*))?"
       ]
     }
   ],
@@ -34,13 +34,7 @@
   "packageRules": [
     {
       "matchDepNames": "teleport-kube-agent",
-      "allowedVersions": "/^[1-9][0-9]*\\.[1-9][0-9]*\\.[0-9]+$/",
-      "sourceUrl": "https://github.com/gravitational/teleport"
-    },
-    {
-      "matchDepNames": "metrics-server",
-      "sourceUrl": "https://github.com/kubernetes-sigs/metrics-server",
-      "sourceDirectory": "charts/metrics-server"
+      "allowedVersions": "/^[1-9][0-9]*\\.[1-9][0-9]*\\.[0-9]+$/"
     }
   ],
   "rebaseWhen": "conflicted"
