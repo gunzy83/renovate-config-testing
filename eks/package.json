@@ -1,0 +1,21 @@
+{
+    "name": "eks-cluster",
+    "main": "index.ts",
+    "devDependencies": {
+        "@types/node": "^16",
+        "@typescript-eslint/eslint-plugin": "^5.57.0",
+        "@typescript-eslint/parser": "^5.57.0",
+        "eslint": "^8.37.0",
+        "eslint-config-airbnb-base": "^15.0.0",
+        "eslint-config-prettier": "^8.8.0",
+        "eslint-plugin-import": "^2.27.5",
+        "eslint-plugin-prettier": "^4.2.1",
+        "prettier": "^2.8.7"
+    },
+    "dependencies": {
+        "@pulumi/aws": "^5.42.0",
+        "@pulumi/eks": "^1.0.2",
+        "@pulumi/kubernetes": "^3.24.2",
+        "@pulumi/pulumi": "^3.78.1"
+    }
+}
