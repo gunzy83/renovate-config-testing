@@ -5,12 +5,15 @@
   "customManagers": [
     {
       "customType": "regex",
-      "datasourceTemplate": "github-releases",
       "fileMatch": [
-        ".*/Pulumi(\\.|\\.[a-z0-9-]*)yaml"
+        "\\.tool-versions$",
+        ".*\\.tool-versions$"
       ],
+      "depNameTemplate": "gravitational/teleport",
+      "datasourceTemplate": "github-releases",
+      "extractVersionTemplate": "^v(?<version>.+)$",
       "matchStrings": [
-        "  [a-z][a-z.-]+:chart-version: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate: depName=(?<depName>[^ \\n]+) +(extractVersion=(?<extractVersion>[^\\n]+))"
+        "(^|\\n)teleport-ent +(?<currentValue>\\S+)"
       ]
     },
     {
@@ -34,9 +37,18 @@
   ],
   "packageRules": [
     {
+      "allowedVersions": "/^[1-9][0-9]*\\.[1-9][0-9]*\\.[0-9]+$/",
+      "commitMessageTopic": "dependency teleport-ent",
       "matchDepNames": [
-        "teleport-kube-agent",
-        "teleport-ent"
+        "gravitational/teleport"
+      ],
+      "matchManagers": [
+        "custom.regex"
+      ]
+    },
+    {
+      "matchDepNames": [
+        "teleport-kube-agent"
       ],
       "allowedVersions": "/^[1-9][0-9]*\\.[1-9][0-9]*\\.[0-9]+$/",
       "sourceUrl": "https://github.com/gravitational/teleport"
