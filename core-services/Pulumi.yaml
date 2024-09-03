@@ -6,7 +6,7 @@ config:
   cert-manager:chart-version: "1.11.1"
   datadog-agent:operator-version: "1.5.0"
   external-dns:chart-version: "1.13.0"
-  prometheus-operator:chart-version: "54.0.0" # renovate: depName=kube-prometheus-stack registryUrl=https://prometheus-community.github.io/helm-charts
+  prometheus-operator:chart-version: "54.2.2" # renovate: depName=kube-prometheus-stack registryUrl=https://prometheus-community.github.io/helm-charts
   squid-egress-proxy:image-tag: '5.2-22.04_beta'
   reloader:chart-version: "1.0.98"
   traefik:chart-version: "27.0.2"
