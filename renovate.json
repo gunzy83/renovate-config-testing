@@ -62,6 +62,11 @@
       "matchPackageNames": "metrics-server",
       "sourceUrl": "https://github.com/kubernetes-sigs/metrics-server",
       "sourceDirectory": "charts/metrics-server"
+    },
+    {
+      "matchDatasources": "helm",
+      "matchPackageNames": "kube-prometheus-stack",
+      "changelogUrl": "https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/README.md"
     }
   ],
   "rebaseWhen": "conflicted"
