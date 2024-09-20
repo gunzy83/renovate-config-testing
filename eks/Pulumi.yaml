@@ -27,6 +27,5 @@ config:
         }
   metrics-server:chart-version: "3.11.0" # renovate: depName=metrics-server registryUrl=https://kubernetes-sigs.github.io/metrics-server/
   teleport:chart-version: "15.4.9" # renovate: depName=teleport-kube-agent registryUrl=https://charts.releases.teleport.dev
-  pendula.sscsi-driver:chart-version: '1.3.4' # renovate: depName=secrets-store-csi-driver registryUrl=https://kubernetes-sigs.github.io/secrets-store-csi-driver/charts
-  sscsi-provider-aws:chart-version: '0.3.4'
-
+  sscsi-driver:chart-version: '1.3.4' # renovate: depName=secrets-store-csi-driver registryUrl=https://kubernetes-sigs.github.io/secrets-store-csi-driver/charts
+  sscsi-provider-aws:chart-version: '0.3.4' # renovate: depName=secrets-store-csi-driver-provider-aws registryUrl=https://aws.github.io/secrets-store-csi-driver-provider-aws
