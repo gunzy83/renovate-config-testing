@@ -33,13 +33,13 @@
     },
     {
       "customType": "regex",
-      "datasourceTemplate": "helm",
-      "versioningTemplate": "semver",
+      "datasourceTemplate": "docker",
+      "versioningTemplate": "helm",
       "fileMatch": [
         ".*/Pulumi(\\.|\\.[a-z0-9-]*)yaml"
       ],
       "matchStrings": [
-        "  [a-z][a-z.-]+:chart-version: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate: depName=(?<registryUrl>oci://[^ \\n]+)\/(?<depName>[^ \\n]+)"
+        "  [a-z][a-z.-]+:chart-version: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate: depName=oci://(?<depName>[^ \\n]+)"
       ]
     }
   ],
