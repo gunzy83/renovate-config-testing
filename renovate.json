@@ -34,12 +34,13 @@
     {
       "customType": "regex",
       "datasourceTemplate": "docker",
+      "depTypeTemplate": "helm-oci",
       "versioningTemplate": "helm",
       "fileMatch": [
         ".*/Pulumi(\\.|\\.[a-z0-9-]*)yaml"
       ],
       "matchStrings": [
-        "  [a-z][a-z.-]+:chart-version: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate: depName=oci://(?<depName>[^ \\n]+)"
+        "  [a-z.-]+[.](?<depName>[a-z-]+):chart-version: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate: packageName=oci://(?<packageName>[^ \\n]+)"
       ]
     }
   ],
@@ -60,6 +61,10 @@
       "matchManagers": [
         "custom.regex"
       ]
+    },
+    {
+      "matchDepTypes": ["helm-oci"]
+      "commitMessageTopic": "Helm release {{depName}}"
     },
     {
       "matchDepNames": [
