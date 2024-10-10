@@ -63,7 +63,7 @@
       ]
     },
     {
-      "matchDepTypes": ["helm-oci"]
+      "matchDepTypes": ["helm-oci"],
       "commitMessageTopic": "Helm release {{depName}}"
     },
     {
