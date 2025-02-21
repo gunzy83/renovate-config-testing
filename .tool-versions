@@ -1,5 +1,5 @@
 awscli 2.13.1
-nodejs 16.18.1
+nodejs 22.14.0
 pulumi 3.130.0
 teleport-ent 15.4.29
 pluto 5.18.6
