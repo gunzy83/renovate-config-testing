@@ -83,6 +83,10 @@
       "matchDatasources": "helm",
       "matchPackageNames": "kube-prometheus-stack",
       "changelogUrl": "https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/README.md"
+    },
+    {
+      "matchPackageNames": ["/teleport/"],
+      "groupName": "teleport"
     }
   ],
   "rebaseWhen": "conflicted"
