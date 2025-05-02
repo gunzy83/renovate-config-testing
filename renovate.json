@@ -81,7 +81,7 @@
       "matchManagers": [
         "custom.regex"
       ]
-    }
+    },
     {
       "matchDepTypes": ["helm-oci"],
       "commitMessageTopic": "Helm release {{depName}}"
