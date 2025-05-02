@@ -26,7 +26,7 @@
         ".*/Pulumi(\\.|\\.[a-z0-9-]*)yaml"
       ],
       "matchStrings": [
-        ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)"
+        ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>.*?)"
       ]
     },
     {
