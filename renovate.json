@@ -25,10 +25,8 @@
       "fileMatch": [
         ".*/Pulumi(\\.|\\.[a-z0-9-]*)yaml"
       ],
-      "depNameTemplate": "bottlerocket-os/bottlerocket",
-      "datasourceTemplate": "github-releases",
       "matchStrings": [
-        ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate: bottlerocket-release"
+        ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)"
       ]
     },
     {
@@ -78,8 +76,8 @@
       "matchDepNames": [
         "bottlerocket-os/bottlerocket"
       ],
-      "matchManagers": [
-        "custom.regex"
+      "matchDatasources": [
+        "github-releases"
       ]
     },
     {
