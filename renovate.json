@@ -22,6 +22,17 @@
     },
     {
       "customType": "regex",
+      "fileMatch": [
+        ".*/Pulumi(\\.|\\.[a-z0-9-]*)yaml"
+      ],
+      "depNameTemplate": "bottlerocket-os/bottlerocket",
+      "datasourceTemplate": "github-releases",
+      "matchStrings": [
+        ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate: bottlerocket-release"
+      ]
+    },
+    {
+      "customType": "regex",
       "datasourceTemplate": "helm",
       "versioningTemplate": "semver",
       "fileMatch": [
