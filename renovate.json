@@ -74,6 +74,15 @@
       ]
     },
     {
+      "commitMessageTopic": "Bottlerocket OS release",
+      "matchDepNames": [
+        "bottlerocket-os/bottlerocket"
+      ],
+      "matchManagers": [
+        "custom.regex"
+      ]
+    }
+    {
       "matchDepTypes": ["helm-oci"],
       "commitMessageTopic": "Helm release {{depName}}"
     },
