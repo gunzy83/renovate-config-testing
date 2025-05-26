@@ -30,6 +30,15 @@
       ]
     },
     {
+      "customType": "regex"
+      "fileMatch": [
+        ".*/Pulumi(\\.|\\.[a-z0-9-]*)yaml"
+      ],
+      "matchStrings": [
+        ".*:image-tag: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate: depName=(?<depName>[^ \\n]+)"
+      ]
+    },
+    {
       "customType": "regex",
       "datasourceTemplate": "helm",
       "versioningTemplate": "semver",
