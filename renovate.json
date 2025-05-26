@@ -35,7 +35,7 @@
         ".*/Pulumi(\\.|\\.[a-z0-9-]*)yaml"
       ],
       "matchStrings": [
-        ".*:image-tag: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate: depName=(?<depName>[^ \\n]+)"
+        ".*:image-tag: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate: registryUrl=(?<registryUrl>[a-z.]+?) depName=(?<depName>[^ \\n]+)"
       ]
     },
     {
