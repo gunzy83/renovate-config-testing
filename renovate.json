@@ -112,7 +112,7 @@
       "changelogUrl": "https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/README.md"
     },
     {
-      "matchPackageNames": ["/teleport/"],
+      "matchPackageNames": ["/teleport/", "/tbot/"],
       "groupName": "teleport"
     }
   ],
