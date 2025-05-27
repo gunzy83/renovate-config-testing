@@ -9,9 +9,9 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": [
-        "\\.tool-versions$",
-        ".*\\.tool-versions$"
+      "managerFilePatterns": [
+        "/\\.tool-versions$/",
+        "/.*\\.tool-versions$/"
       ],
       "depNameTemplate": "gravitational/teleport",
       "datasourceTemplate": "github-releases",
@@ -22,8 +22,8 @@
     },
     {
       "customType": "regex",
-      "fileMatch": [
-        ".*/Pulumi(\\.|\\.[a-z0-9-]*)yaml"
+      "managerFilePatterns": [
+        "/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"
       ],
       "matchStrings": [
         ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>[^ \\n]+)"
@@ -33,8 +33,8 @@
       "customType": "regex",
       "datasourceTemplate": "docker",
       "registryUrlTemplate": "https://{{registryUrl}}",
-      "fileMatch": [
-        ".*/Pulumi(\\.|\\.[a-z0-9-]*)yaml"
+      "managerFilePatterns": [
+        "/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"
       ],
       "matchStrings": [
         ".*:image-tag: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate: registryUrl=(?<registryUrl>[a-z.]+?) depName=(?<depName>[^ \\n]+)"
@@ -44,8 +44,8 @@
       "customType": "regex",
       "datasourceTemplate": "helm",
       "versioningTemplate": "semver",
-      "fileMatch": [
-        ".*/Pulumi(\\.|\\.[a-z0-9-]*)yaml"
+      "managerFilePatterns": [
+        "/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"
       ],
       "matchStrings": [
         "  [a-z][a-z.-]+:chart-version: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate: depName=(?<depName>[^ \\n]+) +(registryUrl=(?<registryUrl>https://[^ \\n]+))"
@@ -56,8 +56,8 @@
       "datasourceTemplate": "docker",
       "depTypeTemplate": "helm-oci",
       "versioningTemplate": "helm",
-      "fileMatch": [
-        ".*/Pulumi(\\.|\\.[a-z0-9-]*)yaml"
+      "managerFilePatterns": [
+        "/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"
       ],
       "matchStrings": [
         "  ([a-z-][.])*(?<depName>[a-z-]+):chart-version: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate: packageName=oci://(?<packageName>[^ \\n]+)"
