@@ -73,6 +73,13 @@
   ],
   "packageRules": [
     {
+      "pinDigests": true,
+      "matchDepNames": [
+        "lts/squid"
+      ],
+      "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)-.*$"
+    },
+    {
       "allowedVersions": "/^[1-9][0-9]*\\.[1-9][0-9]*\\.[0-9]+$/",
       "commitMessageTopic": "dependency teleport-ent",
       "matchDepNames": [
@@ -92,7 +99,9 @@
       ]
     },
     {
-      "matchDepTypes": ["helm-oci"],
+      "matchDepTypes": [
+        "helm-oci"
+      ],
       "commitMessageTopic": "Helm release {{depName}}"
     },
     {
@@ -115,7 +124,10 @@
       "changelogUrl": "https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/README.md"
     },
     {
-      "matchPackageNames": ["/teleport/", "/tbot/"],
+      "matchPackageNames": [
+        "/teleport/",
+        "/tbot/"
+      ],
       "groupName": "teleport"
     }
   ],
