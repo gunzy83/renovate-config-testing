@@ -1,4 +1,4 @@
-awscli 2.13.1
+awscli 2.27.22
 nodejs 16.20.2
 pulumi 3.130.0
 teleport-ent 17.2.8
