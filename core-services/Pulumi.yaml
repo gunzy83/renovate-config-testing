@@ -10,4 +10,4 @@ config:
   squid-egress-proxy:image-tag: '5.2-22.04_beta'
   reloader:chart-version: "1.0.98"
   traefik:chart-version: "27.0.2"
-  machineid-bot:image-tag: "17.4.10" # renovate: registryUrl=public.ecr.aws depName=gravitational/tbot-distroless
+  machineid-bot:image-tag: "16.4.13" # renovate: registryUrl=public.ecr.aws depName=gravitational/tbot-distroless
