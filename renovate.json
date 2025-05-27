@@ -32,11 +32,12 @@
     {
       "customType": "regex",
       "datasourceTemplate": "docker",
+      "registryUrlTemplate": "https://{{registryUrl}}",
       "fileMatch": [
         ".*/Pulumi(\\.|\\.[a-z0-9-]*)yaml"
       ],
       "matchStrings": [
-        ".*:image-tag: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate: registryUrl=(?<registryHost>[a-z.]+?) depName=(?<depName>[^ \\n]+)"
+        ".*:image-tag: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate: registryUrl=(?<registryUrl>[a-z.]+?) depName=(?<depName>[^ \\n]+)"
       ]
     },
     {
