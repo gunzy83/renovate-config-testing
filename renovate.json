@@ -129,6 +129,18 @@
         "/tbot/"
       ],
       "groupName": "teleport"
+    },
+    {
+      "matchDepTypes": [
+        "devDependencies"
+      ],
+      "groupName": "dev-dependencies"
+    },
+    {
+      "matchPackagePatterns": [
+        "^@pulumi/"
+      ],
+      "groupName": "Pulumi packages"
     }
   ],
   "semanticCommits": "enabled",
