@@ -103,6 +103,18 @@
       "rangeStrategy": "widen"
     },
     {
+      "matchManagers": [
+        "asdf"
+      ],
+      "commitMessageTopic": "asdf version for {{depName}}"
+    },
+    {
+      "matchManagers": [
+        "npm"
+      ],
+      "commitMessageTopic": "npm package {{depName}}"
+    },
+    {
       "matchDepNames": [
         "lts/squid"
       ],
@@ -166,9 +178,10 @@
       "groupName": "dev-dependencies"
     },
     {
-      "groupName": "Pulumi packages",
+      "groupName": "pulumi packages",
       "matchPackageNames": [
-        "/^@pulumi//"
+        "/^@pulumi//",
+        "pulumi"
       ]
     }
   ],
