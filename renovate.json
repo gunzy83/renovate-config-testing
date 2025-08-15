@@ -74,6 +74,35 @@
   ],
   "packageRules": [
     {
+      "matchPackageNames": [
+        "*"
+      ],
+      "matchManagers": [
+        "npm"
+      ],
+      "rangeStrategy": "pin"
+    },
+    {
+      "matchDepTypes": [
+        "devDependencies",
+        "dev-dependencies",
+        "dev"
+      ],
+      "matchManagers": [
+        "npm"
+      ],
+      "rangeStrategy": "pin"
+    },
+    {
+      "matchDepTypes": [
+        "peerDependencies"
+      ],
+      "matchManagers": [
+        "npm"
+      ],
+      "rangeStrategy": "widen"
+    },
+    {
       "matchDepNames": [
         "lts/squid"
       ],
