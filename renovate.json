@@ -130,5 +130,7 @@
       "groupName": "teleport"
     }
   ],
-  "rebaseWhen": "conflicted"
+  "semanticCommits": "enabled",
+  "rebaseWhen": "conflicted",
+  "timezone": "Australia/Brisbane"
 }
