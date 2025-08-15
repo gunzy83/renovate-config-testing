@@ -73,7 +73,6 @@
   ],
   "packageRules": [
     {
-      "pinDigests": true,
       "matchDepNames": [
         "lts/squid"
       ],
