@@ -137,10 +137,10 @@
       "groupName": "dev-dependencies"
     },
     {
-      "matchPackagePatterns": [
-        "^@pulumi/"
-      ],
-      "groupName": "Pulumi packages"
+      "groupName": "Pulumi packages",
+      "matchPackageNames": [
+        "/^@pulumi//"
+      ]
     }
   ],
   "semanticCommits": "enabled",
