@@ -66,7 +66,8 @@
   ],
   "enabledManagers": [
     "asdf",
-    "custom.regex"
+    "custom.regex",
+    "npm"
   ],
   "labels": [
     "dependencies"
