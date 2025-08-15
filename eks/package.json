@@ -15,7 +15,7 @@
         "@pulumi/pulumi": "^3.137.0",
         "@pulumi/tls": "^5.0.9",
         "typescript": "^5.8.3",
-        "zod": "^3.24.4",
+        "zod": "^4.0.0",
         "zod-validation-error": "^3.4.1"
     }
 }
