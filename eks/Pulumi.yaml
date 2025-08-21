@@ -28,6 +28,6 @@ config:
   metrics-server:chart-version: "3.12.2" # renovate: depName=metrics-server registryUrl=https://kubernetes-sigs.github.io/metrics-server/
   teleport:chart-version: "17.2.8" # renovate: datasource=custom.teleport depName=teleport-kube-agent
   sscsi-driver:chart-version: "1.5.1" # renovate: depName=secrets-store-csi-driver registryUrl=https://kubernetes-sigs.github.io/secrets-store-csi-driver/charts
-  sscsi-provider-aws:chart-version: "0.3.4" # renovate: depName=secrets-store-csi-driver-provider-aws registryUrl=https://aws.github.io/secrets-store-csi-driver-provider-aws
+  sscsi-provider-aws:chart-version: "0.3.11" # renovate: depName=secrets-store-csi-driver-provider-aws registryUrl=https://aws.github.io/secrets-store-csi-driver-provider-aws
   kms-controller:chart-version: "1.0.31" # renovate: packageName=oci://public.ecr.aws/aws-controllers-k8s/kms-chart
   bottlerocket:release-version: "v1.35.0" # renovate: datasource=github-releases depName=bottlerocket-os/bottlerocket
