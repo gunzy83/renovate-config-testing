@@ -6,6 +6,14 @@
   "baseBranchPatterns": [
     "master"
   ],
+  "customDatasources": {
+    "teleport": {
+      "defaultRegistryUrlTemplate": "https://pendula.teleport.sh/v1/webapi/find",
+      "transformTemplates": [
+        "{\"releases\":[{\"version\": auto_update.tools_version,\"sourceUrl\":\"https://github.com/gravitational/teleport\"}],\"sourceUrl\": \"https://github.com/gravitational/teleport\"}"
+      ]
+    }
+  },
   "customManagers": [
     {
       "customType": "regex",
@@ -14,8 +22,7 @@
         "/.*\\.tool-versions$/"
       ],
       "depNameTemplate": "gravitational/teleport",
-      "datasourceTemplate": "github-releases",
-      "extractVersionTemplate": "^v(?<version>.+)$",
+      "datasourceTemplate": "custom.teleport",
       "matchStrings": [
         "(^|\\n)teleport-ent +(?<currentValue>\\S+)"
       ]
@@ -26,7 +33,7 @@
         "/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"
       ],
       "matchStrings": [
-        ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>[^ \\n]+)"
+        ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^ \\n]+)"
       ]
     },
     {
@@ -126,6 +133,7 @@
       "matchDepNames": [
         "gravitational/teleport"
       ],
+      "sourceUrl": "https://github.com/gravitational/teleport",
       "matchManagers": [
         "custom.regex"
       ]
