@@ -10,7 +10,7 @@
     "teleport": {
       "defaultRegistryUrlTemplate": "https://pendula.teleport.sh/v1/webapi/find",
       "transformTemplates": [
-        "{\"releases\":[{\"version\": auto_update.tools_version,\"sourceUrl\":\"https://github.com/gravitational/teleport\"}],\"sourceUrl\": \"https://github.com/gravitational/teleport\"}"
+        "{\"releases\":[{\"version\": $join([\"v\",auto_update.tools_version]),\"sourceUrl\":\"https://github.com/gravitational/teleport\"}],\"sourceUrl\": \"https://github.com/gravitational/teleport\"}"
       ]
     }
   },
@@ -128,7 +128,7 @@
       "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)-.*$"
     },
     {
-      "allowedVersions": "/^[1-9][0-9]*\\.[1-9][0-9]*\\.[0-9]+$/",
+      "extractVersion": "^v(?<version>.*)$",
       "commitMessageTopic": "dependency teleport-ent",
       "matchDepNames": [
         "gravitational/teleport"
@@ -158,7 +158,7 @@
         "teleport-kube-agent",
         "gravitational/tbot-distroless"
       ],
-      "allowedVersions": "/^[1-9][0-9]*\\.[1-9][0-9]*\\.[0-9]+$/",
+      "extractVersion": "^v(?<version>.*)$",
       "sourceUrl": "https://github.com/gravitational/teleport"
     },
     {
