@@ -129,6 +129,7 @@
     },
     {
       "extractVersion": "^v(?<version>.*)$",
+      "versioning": "semver-coerced",
       "commitMessageTopic": "dependency teleport-ent",
       "matchDepNames": [
         "gravitational/teleport"
@@ -159,6 +160,7 @@
         "gravitational/tbot-distroless"
       ],
       "extractVersion": "^v(?<version>.*)$",
+      "versioning": "semver-coerced",
       "sourceUrl": "https://github.com/gravitational/teleport"
     },
     {
