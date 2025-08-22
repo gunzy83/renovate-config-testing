@@ -8,10 +8,7 @@
   ],
   "customDatasources": {
     "teleport": {
-      "defaultRegistryUrlTemplate": "https://pendula.teleport.sh/v1/webapi/find",
-      "transformTemplates": [
-        "{\"releases\":[{\"version\": $join([\"v\",auto_update.tools_version])}],\"sourceUrl\": \"https://github.com/gravitational/teleport\"}"
-      ]
+      "defaultRegistryUrlTemplate": "https://raw.githubusercontent.com/gunzy83/renovate-config-testing/refs/heads/master/local-datasource.json"
     }
   },
   "customManagers": [
