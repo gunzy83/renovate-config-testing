@@ -3,35 +3,30 @@
   "extends": [
     "config:recommended"
   ],
-  "baseBranchPatterns": [
-    "master"
-  ],
-  "customDatasources": {
-    "teleport": {
-      "defaultRegistryUrlTemplate": "https://raw.githubusercontent.com/gunzy83/renovate-config-testing/refs/heads/master/local-datasource.json"
-    }
-  },
   "customManagers": [
     {
       "customType": "regex",
-      "managerFilePatterns": [
-        "/\\.tool-versions$/",
-        "/.*\\.tool-versions$/"
-      ],
-      "depNameTemplate": "gravitational/teleport",
-      "datasourceTemplate": "custom.teleport",
-      "matchStrings": [
-        "(^|\\n)teleport-ent +(?<currentValue>\\S+)"
-      ]
-    },
-    {
-      "customType": "regex",
+      "datasourceTemplate": "helm",
+      "versioningTemplate": "semver",
       "managerFilePatterns": [
         "/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"
       ],
       "matchStrings": [
-        ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^ \\n]+)"
+        ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate(helm): depName=(?<depName>[^ \\n]+) registryUrl=(?<registryUrl>[^ \\n]+)"
       ]
+    },
+    {
+      "customType": "regex",
+      "datasourceTemplate": "docker",
+      "depTypeTemplate": "helm-oci",
+      "versioningTemplate": "helm",
+      "managerFilePatterns": [
+        "/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"
+      ],
+      "matchStrings": [
+        ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate(helm-oci): packageName=oci://(?<packageName>[^ \\n]+)"
+      ],
+      "commitMessageTopic": "helm release {{depName}}"
     },
     {
       "customType": "regex",
@@ -46,25 +41,35 @@
     },
     {
       "customType": "regex",
-      "datasourceTemplate": "helm",
-      "versioningTemplate": "semver",
       "managerFilePatterns": [
         "/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"
       ],
       "matchStrings": [
-        "  [a-z][a-z.-]+:chart-version: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate: depName=(?<depName>[^ \\n]+) +(registryUrl=(?<registryUrl>https://[^ \\n]+))"
+        ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^ \\n]+)"
       ]
     },
     {
       "customType": "regex",
-      "datasourceTemplate": "docker",
-      "depTypeTemplate": "helm-oci",
-      "versioningTemplate": "helm",
       "managerFilePatterns": [
-        "/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"
+        "/\\.tool-versions$/"
       ],
+      "depNameTemplate": "gravitational/teleport",
+      "datasourceTemplate": "github-releases",
+      "extractVersionTemplate": "^v(?<version>.+)$",
       "matchStrings": [
-        "  ([a-z-][.])*(?<depName>[a-z-]+):chart-version: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate: packageName=oci://(?<packageName>[^ \\n]+)"
+        "(^|\\n)teleport-ent +(?<currentValue>\\S+)"
+      ]
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/\\.tool-versions$/"
+      ],
+      "depNameTemplate": "jqlang/jq",
+      "datasourceTemplate": "github-releases",
+      "extractVersionTemplate": "^jq-(?<version>.+)$",
+      "matchStrings": [
+        "(^|\\n)jq +(?<currentValue>\\S+)"
       ]
     }
   ],
@@ -78,45 +83,70 @@
   ],
   "packageRules": [
     {
-      "matchPackageNames": [
-        "*"
+      "matchDatasources": [
+        "helm",
+        "docker"
       ],
-      "matchManagers": [
-        "npm"
-      ],
-      "rangeStrategy": "pin"
+      "schedule": [
+        "every weekend"
+      ]
     },
     {
+      "matchDatasources": [
+        "npm"
+      ],
+      "schedule": [
+        "monthly"
+      ],
+      "commitMessageTopic": "npm package {{depName}}"
+    },
+    {
+      "matchDatasources": [
+        "npm"
+      ],
       "matchDepTypes": [
         "devDependencies",
         "dev-dependencies",
         "dev"
       ],
-      "matchManagers": [
-        "npm"
-      ],
-      "rangeStrategy": "pin"
+      "groupName": "npm dev dependencies"
     },
     {
-      "matchDepTypes": [
-        "peerDependencies"
-      ],
-      "matchManagers": [
+      "matchDatasources": [
         "npm"
       ],
-      "rangeStrategy": "widen"
+      "matchDepTypes": [
+        "dependencies"
+      ],
+      "groupName": "ungrouped npm dependencies",
+      "rangeStrategy": "pin"
     },
     {
       "matchManagers": [
         "asdf"
       ],
-      "commitMessageTopic": "asdf version for {{depName}}"
+      "commitMessageTopic": "asdf version for {{depName}}",
+      "groupName": "ungrouped asdf dependencies",
+      "schedule": [
+        "monthly"
+      ]
     },
     {
-      "matchManagers": [
-        "npm"
+      "matchPackageNames": [
+        "/teleport/",
+        "/tbot/"
       ],
-      "commitMessageTopic": "npm package {{depName}}"
+      "groupName": "teleport",
+      "schedule": [
+        "every weekend"
+      ]
+    },
+    {
+      "groupName": "pulumi packages",
+      "matchPackageNames": [
+        "/^@pulumi//",
+        "pulumi"
+      ]
     },
     {
       "matchDepNames": [
@@ -125,40 +155,13 @@
       "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)-.*$"
     },
     {
-      "extractVersion": "^v(?<version>.*)$",
-      "versioning": "semver-coerced",
-      "commitMessageTopic": "dependency teleport-ent",
-      "matchDepNames": [
-        "gravitational/teleport"
-      ],
-      "sourceUrl": "https://github.com/gravitational/teleport",
-      "matchManagers": [
-        "custom.regex"
-      ]
-    },
-    {
-      "commitMessageTopic": "Bottlerocket OS release",
       "matchDepNames": [
         "bottlerocket-os/bottlerocket"
       ],
       "matchDatasources": [
         "github-releases"
-      ]
-    },
-    {
-      "matchDepTypes": [
-        "helm-oci"
       ],
-      "commitMessageTopic": "Helm release {{depName}}"
-    },
-    {
-      "matchDepNames": [
-        "teleport-kube-agent",
-        "gravitational/tbot-distroless"
-      ],
-      "extractVersion": "^v(?<version>.*)$",
-      "versioning": "semver-coerced",
-      "sourceUrl": "https://github.com/gravitational/teleport"
+      "commitMessageTopic": "Bottlerocket OS release"
     },
     {
       "matchDatasources": "helm",
@@ -169,27 +172,52 @@
     {
       "matchDatasources": "helm",
       "matchPackageNames": "kube-prometheus-stack",
-      "changelogUrl": "https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/README.md"
+      "changelogUrl": "https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/README.md",
+      "separateMultipleMajor": true
     },
     {
-      "matchPackageNames": [
-        "/teleport/",
-        "/tbot/"
+      "matchDatasources": "helm",
+      "matchDepNames": [
+        "traefik"
       ],
-      "groupName": "teleport"
+      "sourceUrl": "https://github.com/traefik/traefik-helm-chart",
+      "sourceDirectory": "traefik",
+      "separateMultipleMajor": true
     },
     {
-      "matchDepTypes": [
-        "devDependencies"
+      "matchDatasources": "helm",
+      "matchDepNames": [
+        "external-dns"
       ],
-      "groupName": "dev-dependencies"
+      "sourceUrl": "https://github.com/kubernetes-sigs/external-dns",
+      "sourceDirectory": "charts/external-dns"
     },
     {
-      "groupName": "pulumi packages",
-      "matchPackageNames": [
-        "/^@pulumi//",
-        "pulumi"
-      ]
+      "matchDepNames": [
+        "teleport-kube-agent",
+        "teleport-plugin-event-handler",
+        "gravitational/tbot-distroless"
+      ],
+      "allowedVersions": "/^[1-9][0-9]*\\.[1-9][0-9]*\\.[0-9]+$/",
+      "sourceUrl": "https://github.com/gravitational/teleport"
+    },
+    {
+      "matchDatasources": "helm",
+      "matchDepNames": [
+        "datadog-operator"
+      ],
+      "sourceUrl": "https://github.com/DataDog/helm-charts",
+      "sourceDirectory": "charts/datadog-operator"
+    },
+    {
+      "matchDepNames": [
+        "gravitational/teleport"
+      ],
+      "matchManagers": [
+        "custom.regex"
+      ],
+      "allowedVersions": "/^[1-9][0-9]*\\.[1-9][0-9]*\\.[0-9]+$/",
+      "commitMessageTopic": "asdf version for {{depName}}"
     }
   ],
   "semanticCommits": "enabled",
