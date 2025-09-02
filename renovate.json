@@ -25,8 +25,7 @@
       ],
       "matchStrings": [
         ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate(helm-oci): packageName=oci://(?<packageName>[^ \\n]+)"
-      ],
-      "commitMessageTopic": "helm release {{depName}}"
+      ]
     },
     {
       "customType": "regex",
@@ -36,7 +35,7 @@
         "/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"
       ],
       "matchStrings": [
-        ".*:image-tag: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate: registryUrl=(?<registryUrl>[a-z.]+?) depName=(?<depName>[^ \\n]+)"
+        ".*:image-tag: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate(docker): depName=(?<depName>[^ \\n]+) registryUrl=(?<registryUrl>[a-z.]+?)"
       ]
     },
     {
@@ -87,6 +86,15 @@
         "helm",
         "docker"
       ],
+      "schedule": [
+        "every weekend"
+      ]
+    },
+    {
+      "matchDepTypes": [
+        "helm-oci"
+      ],
+      "commitMessageTopic": "helm release {{depName}}",
       "schedule": [
         "every weekend"
       ]
