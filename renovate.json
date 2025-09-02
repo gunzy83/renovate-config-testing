@@ -4,11 +4,6 @@
     "config:recommended",
     ":semanticCommitTypeAll(chore)"
   ],
-  "dependencies": {
-    "major": {
-      "semanticCommitType": "fix"
-    }
-  },
   "customManagers": [
     {
       "customType": "regex",
@@ -92,6 +87,14 @@
   ],
   "packageRules": [
     {
+      "matchDepTypes": [
+        "dependencies"
+      ],
+      "major": {
+        "semanticCommitType": "fix"
+      }
+    },
+    {
       "matchDatasources": [
         "helm",
         "docker"
@@ -158,6 +161,13 @@
       "schedule": [
         "monthly"
       ]
+    },
+    {
+      "matchPackageNames": [
+        "/^node$/",
+        "/^@types/node$/"
+      ],
+      "groupName": "nodejs"
     },
     {
       "matchPackageNames": [
