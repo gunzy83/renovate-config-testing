@@ -24,7 +24,7 @@
         "/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"
       ],
       "matchStrings": [
-        ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate\\(helm-oci\\): packageName=oci://(?<packageName>[^ \\n]+)"
+        ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate\\(helm-oci\\): depName=(?<depName>[^ \\n]+) packageName=oci://(?<packageName>[^ \\n]+)"
       ]
     },
     {
