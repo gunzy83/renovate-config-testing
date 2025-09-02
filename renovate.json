@@ -291,8 +291,8 @@
         "major",
         "minor"
       ],
-      "description": "Disable major and minor updates for kubectl, it will be updated with the clusters",
-      "enabled": false
+      "dependencyDashboardApproval": true,
+      "description": "Only allow major and minor updates for kubectl via dependency dashboard approval, update with the clusters"
     }
   ],
   "semanticCommits": "enabled",
