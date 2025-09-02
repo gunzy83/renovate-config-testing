@@ -52,9 +52,9 @@
       "managerFilePatterns": [
         "/\\.tool-versions$/"
       ],
-      "depNameTemplate": "gravitational/teleport",
+      "depNameTemplate": "teleport-ent",
       "depTypeTemplate": "asdf-custom",
-      "packageNameTemplate": "teleport-ent",
+      "packageNameTemplate": "gravitational/teleport",
       "datasourceTemplate": "github-releases",
       "extractVersionTemplate": "^v(?<version>.+)$",
       "matchStrings": [
@@ -66,9 +66,9 @@
       "managerFilePatterns": [
         "/\\.tool-versions$/"
       ],
-      "depNameTemplate": "jqlang/jq",
+      "depNameTemplate": "jq",
       "depTypeTemplate": "asdf-custom",
-      "packageNameTemplate": "jq",
+      "packageNameTemplate": "jqlang/jq",
       "datasourceTemplate": "github-releases",
       "extractVersionTemplate": "^jq-(?<version>.+)$",
       "matchStrings": [
@@ -167,7 +167,7 @@
       "groupName": "pulumi packages",
       "matchPackageNames": [
         "/^@pulumi//",
-        "pulumi"
+        "/pulumi/"
       ]
     },
     {
