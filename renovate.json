@@ -8,39 +8,43 @@
     {
       "customType": "regex",
       "datasourceTemplate": "helm",
-      "versioningTemplate": "semver",
+      "description": "Manage helm release versions in Pulumi config",
       "managerFilePatterns": [
         "/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"
       ],
       "matchStrings": [
         ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate\\(helm\\): depName=(?<depName>[^ \\n]+) registryUrl=(?<registryUrl>[^ \\n]+)"
-      ]
+      ],
+      "versioningTemplate": "semver"
     },
     {
       "customType": "regex",
       "datasourceTemplate": "docker",
       "depTypeTemplate": "helm-oci",
-      "versioningTemplate": "helm",
+      "description": "Manage helm-oci release versions in Pulumi config",
       "managerFilePatterns": [
         "/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"
       ],
       "matchStrings": [
         ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate\\(helm-oci\\): depName=(?<depName>[^ \\n]+) packageName=oci://(?<packageName>[^ \\n]+)"
-      ]
+      ],
+      "versioningTemplate": "helm"
     },
     {
       "customType": "regex",
       "datasourceTemplate": "docker",
-      "registryUrlTemplate": "https://{{registryUrl}}",
+      "description": "Manage docker image tags in Pulumi config",
       "managerFilePatterns": [
         "/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"
       ],
       "matchStrings": [
         ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate\\(docker\\): depName=(?<depName>[a-z./-]+) registryUrl=(?<registryUrl>[a-z.]+)"
-      ]
+      ],
+      "registryUrlTemplate": "https://{{registryUrl}}"
     },
     {
       "customType": "regex",
+      "description": "Generic dependency bumping with inline datasource selection in Pulumi config",
       "managerFilePatterns": [
         "/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"
       ],
@@ -50,28 +54,30 @@
     },
     {
       "customType": "regex",
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "teleport-ent",
+      "depTypeTemplate": "asdf-custom",
+      "description": "Manage teleport-ent asdf versions",
+      "extractVersionTemplate": "^v(?<version>.+)$",
+      "packageNameTemplate": "gravitational/teleport",
       "managerFilePatterns": [
         "/\\.tool-versions$/"
       ],
-      "depNameTemplate": "teleport-ent",
-      "depTypeTemplate": "asdf-custom",
-      "packageNameTemplate": "gravitational/teleport",
-      "datasourceTemplate": "github-releases",
-      "extractVersionTemplate": "^v(?<version>.+)$",
       "matchStrings": [
         "(^|\\n)teleport-ent +(?<currentValue>\\S+)"
       ]
     },
     {
       "customType": "regex",
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "jq",
+      "depTypeTemplate": "asdf-custom",
+      "description": "Manage jq asdf versions",
+      "extractVersionTemplate": "^jq-(?<version>.+)$",
+      "packageNameTemplate": "jqlang/jq",
       "managerFilePatterns": [
         "/\\.tool-versions$/"
       ],
-      "depNameTemplate": "jq",
-      "depTypeTemplate": "asdf-custom",
-      "packageNameTemplate": "jqlang/jq",
-      "datasourceTemplate": "github-releases",
-      "extractVersionTemplate": "^jq-(?<version>.+)$",
       "matchStrings": [
         "(^|\\n)jq +(?<currentValue>\\S+)"
       ]
@@ -90,6 +96,7 @@
       "matchDepTypes": [
         "dependencies"
       ],
+      "description": "Only major version updated will be marked as fix",
       "major": {
         "semanticCommitType": "fix"
       }
@@ -99,8 +106,9 @@
         "helm",
         "docker"
       ],
+      "description": "Weekly updates for helm and docker dependencies",
       "schedule": [
-        "every weekend"
+        "* * * * 0,6"
       ]
     },
     {
@@ -108,18 +116,20 @@
         "helm-oci"
       ],
       "commitMessageTopic": "helm release {{depName}}",
+      "description": "Weekly updates for helm-oci dependencies",
       "schedule": [
-        "every weekend"
+        "* * * * 0,6"
       ]
     },
     {
       "matchDatasources": [
         "npm"
       ],
+      "commitMessageTopic": "npm package {{depName}}",
+      "description": "Monthly updates for npm dependencies",
       "schedule": [
-        "monthly"
-      ],
-      "commitMessageTopic": "npm package {{depName}}"
+        "* * 5 * *"
+      ]
     },
     {
       "matchDatasources": [
@@ -130,6 +140,7 @@
         "dev-dependencies",
         "dev"
       ],
+      "description": "Group npm dev dependencies",
       "groupName": "npm dev dependencies"
     },
     {
@@ -139,6 +150,7 @@
       "matchDepTypes": [
         "dependencies"
       ],
+      "description": "Group npm dependencies, some may be grouped separately in later rules",
       "groupName": "ungrouped npm dependencies",
       "rangeStrategy": "pin"
     },
@@ -147,9 +159,10 @@
         "asdf"
       ],
       "commitMessageTopic": "asdf version for {{depName}}",
+      "description": "Monthly updates for asdf dependencies",
       "groupName": "ungrouped asdf dependencies",
       "schedule": [
-        "monthly"
+        "* * 5 * *"
       ]
     },
     {
@@ -157,9 +170,10 @@
         "asdf-custom"
       ],
       "commitMessageTopic": "asdf version for {{packageName}}",
+      "description": "Monthly updates for custom managed asdf dependencies",
       "groupName": "ungrouped asdf dependencies",
       "schedule": [
-        "monthly"
+        "* * 5 * *"
       ]
     },
     {
@@ -167,6 +181,7 @@
         "/^node$/",
         "/^@types/node$/"
       ],
+      "description": "Group nodejs runtime and the @types/node package",
       "groupName": "nodejs"
     },
     {
@@ -175,12 +190,14 @@
         "/tbot/"
       ],
       "groupName": "teleport",
+      "description": "Weekly updates for teleport dependencies",
       "schedule": [
-        "every weekend"
+        "* * * * 0,6"
       ]
     },
     {
       "groupName": "pulumi packages",
+      "description": "Group pulumi packages",
       "matchPackageNames": [
         "/^@pulumi//",
         "/pulumi/"
@@ -190,27 +207,31 @@
       "matchDepNames": [
         "lts/squid"
       ],
+      "description": "Custom versioning pattern for squid container image",
       "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)-.*$"
     },
     {
-      "matchDepNames": [
-        "bottlerocket-os/bottlerocket"
-      ],
       "matchDatasources": [
         "github-releases"
       ],
-      "commitMessageTopic": "Bottlerocket OS release"
+      "matchDepNames": [
+        "bottlerocket-os/bottlerocket"
+      ],
+      "commitMessageTopic": "Bottlerocket OS release",
+      "description": "Set commit message topic for bottlerocket"
     },
     {
       "matchDatasources": "helm",
       "matchPackageNames": "metrics-server",
-      "sourceUrl": "https://github.com/kubernetes-sigs/metrics-server",
-      "sourceDirectory": "charts/metrics-server"
+      "description": "Point renovate to the changelog for metrics-server",
+      "sourceDirectory": "charts/metrics-server",
+      "sourceUrl": "https://github.com/kubernetes-sigs/metrics-server"
     },
     {
       "matchDatasources": "helm",
       "matchPackageNames": "kube-prometheus-stack",
       "changelogUrl": "https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/README.md",
+      "description": "Point renovate to the changelog for kube-prometheus-stack and raise multiple major PRs",
       "separateMultipleMajor": true
     },
     {
@@ -218,17 +239,19 @@
       "matchDepNames": [
         "traefik"
       ],
-      "sourceUrl": "https://github.com/traefik/traefik-helm-chart",
+      "description": "Point renovate to the changelog for traefik and raise multiple major PRs",
+      "separateMultipleMajor": true,
       "sourceDirectory": "traefik",
-      "separateMultipleMajor": true
+      "sourceUrl": "https://github.com/traefik/traefik-helm-chart"
     },
     {
       "matchDatasources": "helm",
       "matchDepNames": [
         "external-dns"
       ],
-      "sourceUrl": "https://github.com/kubernetes-sigs/external-dns",
-      "sourceDirectory": "charts/external-dns"
+      "description": "Point renovate to the changelog for external-dns",
+      "sourceDirectory": "charts/external-dns",
+      "sourceUrl": "https://github.com/kubernetes-sigs/external-dns"
     },
     {
       "matchDepNames": [
@@ -237,6 +260,7 @@
         "gravitational/tbot-distroless"
       ],
       "allowedVersions": "/^[1-9][0-9]*\\.[1-9][0-9]*\\.[0-9]+$/",
+      "description": "Disallow dev versions and point to the changelog for teleport dependencies",
       "sourceUrl": "https://github.com/gravitational/teleport"
     },
     {
@@ -244,8 +268,9 @@
       "matchDepNames": [
         "datadog-operator"
       ],
-      "sourceUrl": "https://github.com/DataDog/helm-charts",
-      "sourceDirectory": "charts/datadog-operator"
+      "description": "Point renovate to the changelog for datadog-operator",
+      "sourceDirectory": "charts/datadog-operator",
+      "sourceUrl": "https://github.com/DataDog/helm-charts"
     },
     {
       "matchDepNames": [
@@ -255,7 +280,8 @@
         "custom.regex"
       ],
       "allowedVersions": "/^[1-9][0-9]*\\.[1-9][0-9]*\\.[0-9]+$/",
-      "commitMessageTopic": "asdf version for {{depName}}"
+      "commitMessageTopic": "asdf version for {{depName}}",
+      "description": "Disallow dev versions and point to the changelog for teleport-ent asdf"
     }
   ],
   "semanticCommits": "enabled",
