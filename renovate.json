@@ -12,7 +12,7 @@
         "/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"
       ],
       "matchStrings": [
-        ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate(helm): depName=(?<depName>[^ \\n]+) registryUrl=(?<registryUrl>[^ \\n]+)"
+        ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate\\(helm\\): depName=(?<depName>[^ \\n]+) registryUrl=(?<registryUrl>[^ \\n]+)"
       ]
     },
     {
@@ -24,7 +24,7 @@
         "/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"
       ],
       "matchStrings": [
-        ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate(helm-oci): packageName=oci://(?<packageName>[^ \\n]+)"
+        ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate\\(helm-oci\\): packageName=oci://(?<packageName>[^ \\n]+)"
       ]
     },
     {
@@ -35,7 +35,7 @@
         "/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"
       ],
       "matchStrings": [
-        ".*:image-tag: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate(docker): depName=(?<depName>[^ \\n]+) registryUrl=(?<registryUrl>[a-z.]+?)"
+        ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate\\(docker\\): depName=(?<depName>[^ \\n]+) registryUrl=(?<registryUrl>[a-z.]+?)"
       ]
     },
     {
