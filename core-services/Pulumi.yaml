@@ -2,10 +2,10 @@ name: core-services
 runtime: nodejs
 description: Pulumi program to manage core services
 config:
-  alb-controller:chart-version: "1.5.1"  # renovate(helm): depName=aws-load-balancer-controller registryUrl=https://aws.github.io/eks-charts/
+  alb-controller:chart-version: "1.5.1" # renovate(helm): depName=aws-load-balancer-controller registryUrl=https://aws.github.io/eks-charts/
   cert-manager:chart-version: "1.11.1" # renovate(helm): depName=cert-manager registryUrl=https://charts.jetstack.io
-  datadog-agent:operator-version: "1.5.0" # renovate(helm): depName=datadog-agent registryUrl=https://github.com/DataDog/helm-charts
-  external-dns:chart-version: "1.13.0" # renovate(helm): depName=external-dns registryUrl=https://github.com/kubernetes-sigs/external-dns
+  datadog-agent:operator-version: "1.5.0" # renovate(helm): depName=datadog-operator registryUrl=https://helm.datadoghq.com
+  external-dns:chart-version: "1.13.0" # renovate(helm): depName=external-dns registryUrl=https://kubernetes-sigs.github.io/external-dns/
   prometheus-operator:chart-version: "69.4.1" # renovate(helm): depName=kube-prometheus-stack registryUrl=https://prometheus-community.github.io/helm-charts
   squid-egress-proxy:image-tag: "6.6-24.04_edge" # renovate(docker): depName=lts/squid registryUrl=public.ecr.aws
   reloader:chart-version: "1.0.98" # renovate(helm): depName=reloader registryUrl=https://stakater.github.io/stakater-charts

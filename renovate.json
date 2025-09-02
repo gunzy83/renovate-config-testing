@@ -35,7 +35,7 @@
         "/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"
       ],
       "matchStrings": [
-        ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate\\(docker\\): depName=(?<depName>[^ \\n]+) registryUrl=(?<registryUrl>[a-z.]+?)"
+        ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate\\(docker\\): depName=(?<depName>[a-z./-]+) registryUrl=(?<registryUrl>[a-z.]+?)"
       ]
     },
     {
@@ -53,6 +53,8 @@
         "/\\.tool-versions$/"
       ],
       "depNameTemplate": "gravitational/teleport",
+      "depTypeTemplate": "asdf-custom",
+      "packageNameTemplate": "teleport-ent",
       "datasourceTemplate": "github-releases",
       "extractVersionTemplate": "^v(?<version>.+)$",
       "matchStrings": [
@@ -65,6 +67,8 @@
         "/\\.tool-versions$/"
       ],
       "depNameTemplate": "jqlang/jq",
+      "depTypeTemplate": "asdf-custom",
+      "packageNameTemplate": "jq",
       "datasourceTemplate": "github-releases",
       "extractVersionTemplate": "^jq-(?<version>.+)$",
       "matchStrings": [
@@ -134,6 +138,16 @@
         "asdf"
       ],
       "commitMessageTopic": "asdf version for {{depName}}",
+      "groupName": "ungrouped asdf dependencies",
+      "schedule": [
+        "monthly"
+      ]
+    },
+    {
+      "matchDepTypes": [
+        "asdf-custom"
+      ],
+      "commitMessageTopic": "asdf version for {{packageName}}",
       "groupName": "ungrouped asdf dependencies",
       "schedule": [
         "monthly"
