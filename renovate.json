@@ -4,92 +4,6 @@
     "config:recommended",
     ":semanticCommitTypeAll(chore)"
   ],
-  "dependencies": {
-    "major": {
-      "semanticCommitType": "fix"
-    }
-  },
-  "customManagers": [
-    {
-      "customType": "regex",
-      "datasourceTemplate": "helm",
-      "versioningTemplate": "semver",
-      "managerFilePatterns": [
-        "/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"
-      ],
-      "matchStrings": [
-        ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate\\(helm\\): depName=(?<depName>[^ \\n]+) registryUrl=(?<registryUrl>[^ \\n]+)"
-      ]
-    },
-    {
-      "customType": "regex",
-      "datasourceTemplate": "docker",
-      "depTypeTemplate": "helm-oci",
-      "versioningTemplate": "helm",
-      "managerFilePatterns": [
-        "/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"
-      ],
-      "matchStrings": [
-        ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate\\(helm-oci\\): depName=(?<depName>[^ \\n]+) packageName=oci://(?<packageName>[^ \\n]+)"
-      ]
-    },
-    {
-      "customType": "regex",
-      "datasourceTemplate": "docker",
-      "registryUrlTemplate": "https://{{registryUrl}}",
-      "managerFilePatterns": [
-        "/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"
-      ],
-      "matchStrings": [
-        ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate\\(docker\\): depName=(?<depName>[a-z./-]+) registryUrl=(?<registryUrl>[a-z.]+)"
-      ]
-    },
-    {
-      "customType": "regex",
-      "managerFilePatterns": [
-        "/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"
-      ],
-      "matchStrings": [
-        ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^ \\n]+)"
-      ]
-    },
-    {
-      "customType": "regex",
-      "managerFilePatterns": [
-        "/\\.tool-versions$/"
-      ],
-      "depNameTemplate": "teleport-ent",
-      "depTypeTemplate": "asdf-custom",
-      "packageNameTemplate": "gravitational/teleport",
-      "datasourceTemplate": "github-releases",
-      "extractVersionTemplate": "^v(?<version>.+)$",
-      "matchStrings": [
-        "(^|\\n)teleport-ent +(?<currentValue>\\S+)"
-      ]
-    },
-    {
-      "customType": "regex",
-      "managerFilePatterns": [
-        "/\\.tool-versions$/"
-      ],
-      "depNameTemplate": "jq",
-      "depTypeTemplate": "asdf-custom",
-      "packageNameTemplate": "jqlang/jq",
-      "datasourceTemplate": "github-releases",
-      "extractVersionTemplate": "^jq-(?<version>.+)$",
-      "matchStrings": [
-        "(^|\\n)jq +(?<currentValue>\\S+)"
-      ]
-    }
-  ],
-  "enabledManagers": [
-    "asdf",
-    "custom.regex",
-    "npm"
-  ],
-  "labels": [
-    "dependencies"
-  ],
   "packageRules": [
     {
       "matchDatasources": [
@@ -246,7 +160,96 @@
       ],
       "allowedVersions": "/^[1-9][0-9]*\\.[1-9][0-9]*\\.[0-9]+$/",
       "commitMessageTopic": "asdf version for {{depName}}"
+    },
+    {
+      "matchDepTypes": [
+        "dependencies"
+      ],
+      "major": {
+        "semanticCommitType": "fix"
+      }
     }
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "datasourceTemplate": "helm",
+      "versioningTemplate": "semver",
+      "managerFilePatterns": [
+        "/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"
+      ],
+      "matchStrings": [
+        ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate\\(helm\\): depName=(?<depName>[^ \\n]+) registryUrl=(?<registryUrl>[^ \\n]+)"
+      ]
+    },
+    {
+      "customType": "regex",
+      "datasourceTemplate": "docker",
+      "depTypeTemplate": "helm-oci",
+      "versioningTemplate": "helm",
+      "managerFilePatterns": [
+        "/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"
+      ],
+      "matchStrings": [
+        ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate\\(helm-oci\\): depName=(?<depName>[^ \\n]+) packageName=oci://(?<packageName>[^ \\n]+)"
+      ]
+    },
+    {
+      "customType": "regex",
+      "datasourceTemplate": "docker",
+      "registryUrlTemplate": "https://{{registryUrl}}",
+      "managerFilePatterns": [
+        "/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"
+      ],
+      "matchStrings": [
+        ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate\\(docker\\): depName=(?<depName>[a-z./-]+) registryUrl=(?<registryUrl>[a-z.]+)"
+      ]
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"
+      ],
+      "matchStrings": [
+        ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^ \\n]+)"
+      ]
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/\\.tool-versions$/"
+      ],
+      "depNameTemplate": "teleport-ent",
+      "depTypeTemplate": "asdf-custom",
+      "packageNameTemplate": "gravitational/teleport",
+      "datasourceTemplate": "github-releases",
+      "extractVersionTemplate": "^v(?<version>.+)$",
+      "matchStrings": [
+        "(^|\\n)teleport-ent +(?<currentValue>\\S+)"
+      ]
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/\\.tool-versions$/"
+      ],
+      "depNameTemplate": "jq",
+      "depTypeTemplate": "asdf-custom",
+      "packageNameTemplate": "jqlang/jq",
+      "datasourceTemplate": "github-releases",
+      "extractVersionTemplate": "^jq-(?<version>.+)$",
+      "matchStrings": [
+        "(^|\\n)jq +(?<currentValue>\\S+)"
+      ]
+    }
+  ],
+  "enabledManagers": [
+    "asdf",
+    "custom.regex",
+    "npm"
+  ],
+  "labels": [
+    "dependencies"
   ],
   "semanticCommits": "enabled",
   "rebaseWhen": "conflicted",
