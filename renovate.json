@@ -1,8 +1,14 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:recommended",
+    ":semanticCommitTypeAll(chore)"
   ],
+  "dependencies": {
+    "major": {
+      "semanticCommitType": "fix"
+    }
+  },
   "customManagers": [
     {
       "customType": "regex",
