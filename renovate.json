@@ -35,7 +35,7 @@
         "/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"
       ],
       "matchStrings": [
-        ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate\\(docker\\): depName=(?<depName>[a-z./-]+) registryUrl=(?<registryUrl>[a-z.]+?)"
+        ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate\\(docker\\): depName=(?<depName>[a-z./-]+) registryUrl=(?<registryUrl>[a-z.]+)"
       ]
     },
     {
