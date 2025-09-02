@@ -287,11 +287,12 @@
       "matchPackageNames": [
         "kubectl"
       ],
-      "description": "Exclude major and minor updates for kubectl, it will be updated with the clusters",
-      "excludeUpdateTypes": [
+      "matchUpdateTypes": [
         "major",
         "minor"
-      ]
+      ],
+      "description": "Disable major and minor updates for kubectl, it will be updated with the clusters",
+      "enabled": false
     }
   ],
   "semanticCommits": "enabled",
