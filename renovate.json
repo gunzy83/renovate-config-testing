@@ -284,7 +284,14 @@
       "description": "Disallow dev versions and point to the changelog for teleport-ent asdf"
     },
     {
-      "matchPackageNames": [
+      "matchDepNames": [
+        "kubectl"
+      ],
+      "description": "Separate kubectl minor and patch updates to allow only patches to be allowed",
+      "separateMinorPatch": true
+    },
+    {
+      "matchDepNames": [
         "kubectl"
       ],
       "matchUpdateTypes": [
