@@ -26,7 +26,7 @@ config:
           }
         }
   metrics-server:chart-version: "3.12.2" # renovate(helm): depName=metrics-server registryUrl=https://kubernetes-sigs.github.io/metrics-server/
-  teleport:chart-version: "17.2.8" # renovate(helm): depName=teleport-kube-agent registryUrl=https://charts.releases.teleport.dev
+  teleport:chart-version: "18.1.8" # renovate(helm): depName=teleport-kube-agent registryUrl=https://charts.releases.teleport.dev
   sscsi-driver:chart-version: "1.5.1" # renovate(helm): depName=secrets-store-csi-driver registryUrl=https://kubernetes-sigs.github.io/secrets-store-csi-driver/charts
   sscsi-provider-aws:chart-version: "0.3.4" # renovate(helm): depName=secrets-store-csi-driver-provider-aws registryUrl=https://aws.github.io/secrets-store-csi-driver-provider-aws
   kms-controller:chart-version: "1.1.0" # renovate(helm-oci): depName=kms-controller packageName=oci://public.ecr.aws/aws-controllers-k8s/kms-chart
