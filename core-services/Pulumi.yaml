@@ -9,5 +9,5 @@ config:
   prometheus-operator:chart-version: "70.10.0" # renovate(helm): depName=kube-prometheus-stack registryUrl=https://prometheus-community.github.io/helm-charts
   squid-egress-proxy:image-tag: "6.6-24.04_edge" # renovate(docker): depName=lts/squid registryUrl=public.ecr.aws
   reloader:chart-version: "1.0.98" # renovate(helm): depName=reloader registryUrl=https://stakater.github.io/stakater-charts
-  traefik:chart-version: "27.0.2" # renovate(helm): depName=traefik registryUrl=https://helm.traefik.io/traefik
+  traefik:chart-version: "28.3.0" # renovate(helm): depName=traefik registryUrl=https://helm.traefik.io/traefik
   machineid-bot:image-tag: "17.4.10" # renovate(docker): depName=gravitational/tbot-distroless registryUrl=public.ecr.aws
