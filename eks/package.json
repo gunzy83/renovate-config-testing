@@ -10,7 +10,7 @@
         "typescript-eslint": "^8.35.1"
     },
     "dependencies": {
-        "@pulumi/aws": "6.83.0",
+        "@pulumi/aws": "7.7.0",
         "@pulumi/kubernetes": "4.23.0",
         "@pulumi/pulumi": "3.194.0",
         "@pulumi/tls": "5.2.2",
