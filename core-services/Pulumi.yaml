@@ -3,7 +3,7 @@ runtime: nodejs
 description: Pulumi program to manage core services
 config:
   alb-controller:chart-version: "1.5.1" # renovate(helm): depName=aws-load-balancer-controller registryUrl=https://aws.github.io/eks-charts/
-  cert-manager:chart-version: "1.11.1" # renovate(helm): depName=cert-manager registryUrl=https://charts.jetstack.io
+  cert-manager:chart-version: "1.19.0" # renovate(helm): depName=cert-manager registryUrl=https://charts.jetstack.io
   datadog-agent:operator-version: "2.13.1" # renovate(helm): depName=datadog-operator registryUrl=https://helm.datadoghq.com
   external-dns:chart-version: "1.13.0" # renovate(helm): depName=external-dns registryUrl=https://kubernetes-sigs.github.io/external-dns/
   prometheus-operator:chart-version: "70.10.0" # renovate(helm): depName=kube-prometheus-stack registryUrl=https://prometheus-community.github.io/helm-charts
