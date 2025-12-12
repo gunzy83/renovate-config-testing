@@ -10,9 +10,9 @@
         "typescript-eslint": "^8.35.1"
     },
     "dependencies": {
-        "@pulumi/aws": "6.83.0",
-        "@pulumi/kubernetes": "4.23.0",
-        "@pulumi/pulumi": "3.194.0",
+        "@pulumi/aws": "6.83.2",
+        "@pulumi/kubernetes": "4.24.1",
+        "@pulumi/pulumi": "3.211.0",
         "@types/js-yaml": "4.0.9",
         "@types/node": "22.18.1",
         "js-yaml": "4.1.0",
