@@ -15,7 +15,7 @@
         "@pulumi/pulumi": "3.211.0",
         "@types/js-yaml": "4.0.9",
         "@types/node": "22.18.1",
-        "js-yaml": "4.1.0",
+        "js-yaml": "4.1.1",
         "json-schema-to-typescript": "15.0.4",
         "semver": "7.7.2",
         "typescript": "5.9.2"
