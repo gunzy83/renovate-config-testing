@@ -69,13 +69,13 @@
       "matchStringsStrategy": "recursive",
       "matchStrings": [
         ".*: (?<bottleRocketVersion>[\"']?[\\d.]+-[a-f0-9]+[\"']?) +# renovate: bottlerocket-release",
-        "(?<currentValue>(?<version>[\\d.]+))-(?<currentHash>[a-f0-9]+)"
+        "(?<currentValue>(?<version>[\\d.]+))-(?<currentDigest>[a-f0-9]+)"
       ],
       "depNameTemplate": "bottlerocket-os/bottlerocket",
-      "datasourceTemplate": "github-releases",
+      "datasourceTemplate": "github-tags",
       "versioningTemplate": "semver",
       "extractVersionTemplate": "^v(?<version>.*)$",
-      "autoReplaceStringTemplate": "{{{newVersion}}}-{{#if newDigest}}{{{substring newDigest 0 7}}}{{else}}{{{currentHash}}}{{/if}}"
+      "autoReplaceStringTemplate": "{{{newVersion}}}-{{{newDigestShort}}}"
     }
   ],
   "enabledManagers": ["asdf", "custom.regex", "npm"],
@@ -157,7 +157,11 @@
       "matchDatasources": ["github-releases"],
       "matchDepNames": ["bottlerocket-os/bottlerocket"],
       "commitMessageTopic": "Bottlerocket OS release",
-      "description": "Set commit message topic for bottlerocket"
+      "description": "Set commit message topic for bottlerocket",
+      "pinDigests": false,
+      "digest": {
+        "enabled": false
+      }
     },
     {
       "matchDatasources": "helm",
