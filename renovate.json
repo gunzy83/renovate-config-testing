@@ -154,14 +154,11 @@
       "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)-.*$"
     },
     {
-      "matchDatasources": ["github-releases"],
+      "matchDatasources": ["github-tags"],
       "matchDepNames": ["bottlerocket-os/bottlerocket"],
       "commitMessageTopic": "Bottlerocket OS release",
       "description": "Set commit message topic for bottlerocket",
-      "pinDigests": false,
-      "digest": {
-        "enabled": false
-      }
+      "commitMessagePrefix": "chore(deps)!:"
     },
     {
       "matchDatasources": "helm",
