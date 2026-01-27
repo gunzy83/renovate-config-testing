@@ -72,7 +72,7 @@
         "(?<currentValue>(?<version>[\\d.]+))-(?<currentDigest>[a-f0-9]+)"
       ],
       "depNameTemplate": "bottlerocket-os/bottlerocket",
-      "datasourceTemplate": "github-releases",
+      "datasourceTemplate": "github-tags",
       "versioningTemplate": "semver",
       "currentValueTemplate": "v{{{version}}}",
       "extractVersionTemplate": "^v?(?<version>.*)$",
