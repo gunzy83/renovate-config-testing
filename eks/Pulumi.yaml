@@ -30,4 +30,4 @@ config:
   sscsi-driver:chart-version: "1.5.1" # renovate(helm): depName=secrets-store-csi-driver registryUrl=https://kubernetes-sigs.github.io/secrets-store-csi-driver/charts
   sscsi-provider-aws:chart-version: "0.3.4" # renovate(helm): depName=secrets-store-csi-driver-provider-aws registryUrl=https://aws.github.io/secrets-store-csi-driver-provider-aws
   kms-controller:chart-version: "1.2.1" # renovate(helm-oci): depName=kms-controller packageName=oci://public.ecr.aws/aws-controllers-k8s/kms-chart
-  bottlerocket:release-version: "1.52.0-b7ac6e1a" # renovate: bottlerocket-release
+  bottlerocket:release-version: "1.52.0-b7ac6e1" # renovate: bottlerocket-release
