@@ -1,17 +1,12 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended",
-    ":semanticCommitTypeAll(chore)"
-  ],
+  "extends": ["config:recommended", ":semanticCommitTypeAll(chore)"],
   "customManagers": [
     {
       "customType": "regex",
       "datasourceTemplate": "helm",
       "description": "Manage helm release versions in Pulumi config",
-      "managerFilePatterns": [
-        "/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"
-      ],
+      "managerFilePatterns": ["/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"],
       "matchStrings": [
         ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate\\(helm\\): depName=(?<depName>[^ \\n]+) registryUrl=(?<registryUrl>[^ \\n]+)"
       ],
@@ -22,9 +17,7 @@
       "datasourceTemplate": "docker",
       "depTypeTemplate": "helm-oci",
       "description": "Manage helm-oci release versions in Pulumi config",
-      "managerFilePatterns": [
-        "/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"
-      ],
+      "managerFilePatterns": ["/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"],
       "matchStrings": [
         ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate\\(helm-oci\\): depName=(?<depName>[^ \\n]+) packageName=oci://(?<packageName>[^ \\n]+)"
       ],
@@ -34,9 +27,7 @@
       "customType": "regex",
       "datasourceTemplate": "docker",
       "description": "Manage docker image tags in Pulumi config",
-      "managerFilePatterns": [
-        "/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"
-      ],
+      "managerFilePatterns": ["/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"],
       "matchStrings": [
         ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate\\(docker\\): depName=(?<depName>[a-z./-]+) registryUrl=(?<registryUrl>[a-z.]+)"
       ],
@@ -45,9 +36,7 @@
     {
       "customType": "regex",
       "description": "Generic dependency bumping with inline datasource selection in Pulumi config",
-      "managerFilePatterns": [
-        "/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"
-      ],
+      "managerFilePatterns": ["/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"],
       "matchStrings": [
         ".*: [\"']?(?<currentValue>[^'\" ]+)[\"']? +# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^ \\n]+)"
       ]
@@ -60,12 +49,8 @@
       "description": "Manage teleport-ent asdf versions",
       "extractVersionTemplate": "^v(?<version>.+)$",
       "packageNameTemplate": "gravitational/teleport",
-      "managerFilePatterns": [
-        "/\\.tool-versions$/"
-      ],
-      "matchStrings": [
-        "(^|\\n)teleport-ent +(?<currentValue>\\S+)"
-      ]
+      "managerFilePatterns": ["/\\.tool-versions$/"],
+      "matchStrings": ["(^|\\n)teleport-ent +(?<currentValue>\\S+)"]
     },
     {
       "customType": "regex",
@@ -75,148 +60,100 @@
       "description": "Manage jq asdf versions",
       "extractVersionTemplate": "^jq-(?<version>.+)$",
       "packageNameTemplate": "jqlang/jq",
-      "managerFilePatterns": [
-        "/\\.tool-versions$/"
-      ],
+      "managerFilePatterns": ["/\\.tool-versions$/"],
+      "matchStrings": ["(^|\\n)jq +(?<currentValue>\\S+)"]
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": ["/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"],
       "matchStrings": [
-        "(^|\\n)jq +(?<currentValue>\\S+)"
-      ]
+        ".*: [\"']?(?<currentValue>(?<version>[^-]+)-(?<currentDigest>[a-f0-9]+))[\"']? +# renovate: bottlerocket-release"
+      ],
+      "depNameTemplate": "bottlerocket-os/bottlerocket",
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "semver",
+      "extractVersionTemplate": "^v?(?<version>.*)$",
+      "autoReplaceStringTemplate": "{{newVersion}}-{{newDigestShort}}"
     }
   ],
-  "enabledManagers": [
-    "asdf",
-    "custom.regex",
-    "npm"
-  ],
-  "labels": [
-    "dependencies"
-  ],
+  "enabledManagers": ["asdf", "custom.regex", "npm"],
+  "labels": ["dependencies"],
   "packageRules": [
     {
-      "matchDepTypes": [
-        "dependencies"
-      ],
+      "matchDepTypes": ["dependencies"],
       "description": "Only major version updated will be marked as fix",
       "major": {
         "semanticCommitType": "fix"
       }
     },
     {
-      "matchDatasources": [
-        "helm",
-        "docker"
-      ],
+      "matchDatasources": ["helm", "docker"],
       "description": "Weekly updates for helm and docker dependencies",
-      "schedule": [
-        "* * * * 0,6"
-      ]
+      "schedule": ["* * * * 0,6"]
     },
     {
-      "matchDepTypes": [
-        "helm-oci"
-      ],
+      "matchDepTypes": ["helm-oci"],
       "commitMessageTopic": "helm release {{depName}}",
       "description": "Weekly updates for helm-oci dependencies",
-      "schedule": [
-        "* * * * 0,6"
-      ]
+      "schedule": ["* * * * 0,6"]
     },
     {
-      "matchDatasources": [
-        "npm"
-      ],
+      "matchDatasources": ["npm"],
       "commitMessageTopic": "npm package {{depName}}",
       "description": "Monthly updates for npm dependencies",
-      "schedule": [
-        "* * 5 * *"
-      ]
+      "schedule": ["* * 5 * *"]
     },
     {
-      "matchDatasources": [
-        "npm"
-      ],
-      "matchDepTypes": [
-        "devDependencies",
-        "dev-dependencies",
-        "dev"
-      ],
+      "matchDatasources": ["npm"],
+      "matchDepTypes": ["devDependencies", "dev-dependencies", "dev"],
       "description": "Group npm dev dependencies",
       "groupName": "npm dev dependencies"
     },
     {
-      "matchDatasources": [
-        "npm"
-      ],
-      "matchDepTypes": [
-        "dependencies"
-      ],
+      "matchDatasources": ["npm"],
+      "matchDepTypes": ["dependencies"],
       "description": "Group npm dependencies, some may be grouped separately in later rules",
       "groupName": "ungrouped npm dependencies",
       "rangeStrategy": "pin"
     },
     {
-      "matchManagers": [
-        "asdf"
-      ],
+      "matchManagers": ["asdf"],
       "commitMessageTopic": "asdf version for {{depName}}",
       "description": "Monthly updates for asdf dependencies",
       "groupName": "ungrouped asdf dependencies",
-      "schedule": [
-        "* * 5 * *"
-      ]
+      "schedule": ["* * 5 * *"]
     },
     {
-      "matchDepTypes": [
-        "asdf-custom"
-      ],
+      "matchDepTypes": ["asdf-custom"],
       "commitMessageTopic": "asdf version for {{packageName}}",
       "description": "Monthly updates for custom managed asdf dependencies",
       "groupName": "ungrouped asdf dependencies",
-      "schedule": [
-        "* * 5 * *"
-      ]
+      "schedule": ["* * 5 * *"]
     },
     {
-      "matchPackageNames": [
-        "/^node$/",
-        "/^@types/node$/"
-      ],
+      "matchPackageNames": ["/^node$/", "/^@types/node$/"],
       "description": "Group nodejs runtime and the @types/node package",
       "groupName": "nodejs"
     },
     {
-      "matchPackageNames": [
-        "/teleport/",
-        "/tbot/"
-      ],
+      "matchPackageNames": ["/teleport/", "/tbot/"],
       "groupName": "teleport",
       "description": "Weekly updates for teleport dependencies",
-      "schedule": [
-        "* * * * 0,6"
-      ]
+      "schedule": ["* * * * 0,6"]
     },
     {
       "groupName": "pulumi packages",
       "description": "Group pulumi packages",
-      "matchPackageNames": [
-        "/^@pulumi//",
-        "/pulumi/"
-      ]
+      "matchPackageNames": ["/^@pulumi//", "/pulumi/"]
     },
     {
-      "matchDepNames": [
-        "lts/squid"
-      ],
+      "matchDepNames": ["lts/squid"],
       "description": "Custom versioning pattern for squid container image",
       "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)-.*$"
     },
     {
-      "matchDatasources": [
-        "github-releases"
-      ],
-      "matchDepNames": [
-        "bottlerocket-os/bottlerocket"
-      ],
+      "matchDatasources": ["github-releases"],
+      "matchDepNames": ["bottlerocket-os/bottlerocket"],
       "commitMessageTopic": "Bottlerocket OS release",
       "description": "Set commit message topic for bottlerocket"
     },
@@ -236,9 +173,7 @@
     },
     {
       "matchDatasources": "helm",
-      "matchDepNames": [
-        "traefik"
-      ],
+      "matchDepNames": ["traefik"],
       "description": "Point renovate to the changelog for traefik and raise multiple major PRs",
       "separateMultipleMajor": true,
       "sourceDirectory": "traefik",
@@ -246,9 +181,7 @@
     },
     {
       "matchDatasources": "helm",
-      "matchDepNames": [
-        "external-dns"
-      ],
+      "matchDepNames": ["external-dns"],
       "description": "Point renovate to the changelog for external-dns",
       "sourceDirectory": "charts/external-dns",
       "sourceUrl": "https://github.com/kubernetes-sigs/external-dns"
@@ -265,39 +198,26 @@
     },
     {
       "matchDatasources": "helm",
-      "matchDepNames": [
-        "datadog-operator"
-      ],
+      "matchDepNames": ["datadog-operator"],
       "description": "Point renovate to the changelog for datadog-operator",
       "sourceDirectory": "charts/datadog-operator",
       "sourceUrl": "https://github.com/DataDog/helm-charts"
     },
     {
-      "matchDepNames": [
-        "gravitational/teleport"
-      ],
-      "matchManagers": [
-        "custom.regex"
-      ],
+      "matchDepNames": ["gravitational/teleport"],
+      "matchManagers": ["custom.regex"],
       "allowedVersions": "/^[1-9][0-9]*\\.[1-9][0-9]*\\.[0-9]+$/",
       "commitMessageTopic": "asdf version for {{depName}}",
       "description": "Disallow dev versions and point to the changelog for teleport-ent asdf"
     },
     {
-      "matchDepNames": [
-        "kubectl"
-      ],
+      "matchDepNames": ["kubectl"],
       "description": "Separate kubectl minor and patch updates to allow only patches to be allowed",
       "separateMinorPatch": true
     },
     {
-      "matchDepNames": [
-        "kubectl"
-      ],
-      "matchUpdateTypes": [
-        "major",
-        "minor"
-      ],
+      "matchDepNames": ["kubectl"],
+      "matchUpdateTypes": ["major", "minor"],
       "enabled": false,
       "description": "Disable major and minor updates for kubectl, update with the clusters"
     }
