@@ -74,6 +74,7 @@
       "depNameTemplate": "bottlerocket-os/bottlerocket",
       "datasourceTemplate": "github-releases",
       "versioningTemplate": "semver",
+      "currentValueTemplate": "v{{{version}}}",
       "extractVersionTemplate": "^v?(?<version>.*)$",
       "autoReplaceStringTemplate": "{{newVersion}}-{{newDigestShort}}"
     }
