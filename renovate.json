@@ -69,13 +69,13 @@
       "matchStringsStrategy": "recursive",
       "matchStrings": [
         ".*: (?<bottleRocketVersion>[\"']?[\\d.]+-[a-f0-9]+[\"']?) +# renovate: bottlerocket-release",
-        "(?<currentValue>(?<version>[\\d.]+))-(?<currentDigestShort>[a-f0-9]+)"
+        "(?<currentValue>(?<version>[\\d.]+))-(?<currentHash>[a-f0-9]+)"
       ],
       "depNameTemplate": "bottlerocket-os/bottlerocket",
       "datasourceTemplate": "github-releases",
       "versioningTemplate": "semver",
-      "extractVersionTemplate": "^v?(?<version>.*)$",
-      "autoReplaceStringTemplate": "{{newVersion}}-{{#if newDigest}}{{newDigestShort}}{{/if}}"
+      "extractVersionTemplate": "^v(?<version>.*)$",
+      "autoReplaceStringTemplate": "{{{newVersion}}}-{{#if newDigest}}{{{substring newDigest 0 7}}}{{else}}{{{currentHash}}}{{/if}}"
     }
   ],
   "enabledManagers": ["asdf", "custom.regex", "npm"],
