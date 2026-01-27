@@ -68,14 +68,14 @@
       "managerFilePatterns": ["/.*/Pulumi(\\.|\\.[a-z0-9-]*)yaml/"],
       "matchStringsStrategy": "recursive",
       "matchStrings": [
-        ".*: (?<bottleRocketVersion>[\"']?[\\d.]+-[a-f0-9]+[\"']?) +# renovate: bottlerocket-release",
-        "(?<currentValue>(?<version>[\\d.]+))-(?<currentDigest>[a-f0-9]+)"
+        ".*: (?<bottleRocketVersion>[\"']?[\\d.]+-[a-f0-9]+[\"']? +# renovate: bottlerocket-release digest: [a-f0-9]+)",
+        "[\"']?(?<currentValue>(?<version>[\\d.]+))-[a-f0-9]+[\"']? +# renovate: bottlerocket-release digest: (?<currentDigest>[a-f0-9]+)"
       ],
       "depNameTemplate": "bottlerocket-os/bottlerocket",
       "datasourceTemplate": "github-tags",
       "versioningTemplate": "semver",
       "extractVersionTemplate": "^v(?<version>.*)$",
-      "autoReplaceStringTemplate": "{{{newVersion}}}-{{{newDigestShort}}}"
+      "autoReplaceStringTemplate": "\"{{{newVersion}}}-{{{replace '[a-f0-9]{32}$' '' newDigest}}}\" # renovate: bottlerocket-release digest: {{{newDigest}}}"
     }
   ],
   "enabledManagers": ["asdf", "custom.regex", "npm"],
