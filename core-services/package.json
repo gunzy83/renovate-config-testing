@@ -14,7 +14,7 @@
         "@pulumi/kubernetes": "4.24.1",
         "@pulumi/pulumi": "3.211.0",
         "@types/js-yaml": "4.0.9",
-        "@types/node": "22.18.1",
+        "@types/node": "22.19.15",
         "js-yaml": "4.1.1",
         "json-schema-to-typescript": "15.0.4",
         "semver": "7.7.4",
