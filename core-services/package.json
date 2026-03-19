@@ -12,7 +12,7 @@
     "dependencies": {
         "@pulumi/aws": "6.83.2",
         "@pulumi/kubernetes": "4.24.1",
-        "@pulumi/pulumi": "3.211.0",
+        "@pulumi/pulumi": "3.226.0",
         "@types/js-yaml": "4.0.9",
         "@types/node": "22.19.15",
         "js-yaml": "4.1.1",
