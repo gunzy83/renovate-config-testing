@@ -6,7 +6,7 @@ config:
   cert-manager:chart-version: "1.20.2" # renovate(helm): depName=cert-manager registryUrl=https://charts.jetstack.io
   datadog-agent:operator-version: "2.21.1" # renovate(helm): depName=datadog-operator registryUrl=https://helm.datadoghq.com
   external-dns:chart-version: "1.20.0" # renovate(helm): depName=external-dns registryUrl=https://kubernetes-sigs.github.io/external-dns/
-  prometheus-operator:chart-version: "83.6.0" # renovate(helm): depName=kube-prometheus-stack registryUrl=https://prometheus-community.github.io/helm-charts
+  prometheus-operator:chart-version: "83.7.0" # renovate(helm): depName=kube-prometheus-stack registryUrl=https://prometheus-community.github.io/helm-charts
   squid-egress-proxy:image-tag: "6.6-24.04_edge" # renovate(docker): depName=lts/squid registryUrl=public.ecr.aws
   reloader:chart-version: "2.2.11" # renovate(helm): depName=reloader registryUrl=https://stakater.github.io/stakater-charts
   traefik:chart-version: "39.0.8" # renovate(helm): depName=traefik registryUrl=https://helm.traefik.io/traefik
